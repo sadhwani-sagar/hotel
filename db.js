@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
-const mongooseURL = 'mongodb://localhost:27017/restaurant';
+require('dotenv').config();
 
-mongoose.connect(mongooseURL).catch(err => {
+// const mongooseURL = 'mongodb://localhost:27017/restaurant';
+ const mongoURL = process.env.DB_URL || 'mongodb://localhost:27017/restaurant';
+mongoose.connect(mongoURL).catch(err => {
     console.error("Initial connection failed:", err);
     process.exit(1);
 });
